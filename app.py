@@ -11,7 +11,7 @@ st.title("🎬 Movie Recommendation System")
 st.write("Select a movie to find similar movies.")
 
 # Load movie dataset
-movies = pd.read_csv("Dataset/tmdb_5000_movies.csv")
+movies = pd.read_csv("tmdb_5000_movies.csv")
 
 # Handle missing descriptions
 movies["overview"] = movies["overview"].fillna("")
