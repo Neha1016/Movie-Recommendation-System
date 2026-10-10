@@ -6,40 +6,54 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Set page title
 st.title("🎬 Movie Recommendation System")
 st.write("Select a movie to find similar movies.")
 
 # Load movie dataset
-movies = pd.read_csv("tmdb_5000_movies.csv")
-
-# Handle missing descriptions
-movies["overview"] = movies["overview"].fillna("")
+@st.cache_data
+def load_movies():
+    movies = pd.read_csv("tmdb_5000_movies.csv")
+    movies["overview"] = movies["overview"].fillna("")
+    movies = movies.dropna(subset=["title"]).reset_index(drop=True)
+    return movies
 
 # Create TF-IDF vectors
-tfidf = TfidfVectorizer(stop_words="english")
-tfidf_matrix = tfidf.fit_transform(movies["overview"])
+@st.cache_resource
+def create_tfidf(movies):
+    tfidf = TfidfVectorizer(stop_words="english")
+    tfidf_matrix = tfidf.fit_transform(movies["overview"])
+    return tfidf_matrix
 
-# Calculate cosine similarity
-cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
+movies = load_movies()
+tfidf_matrix = create_tfidf(movies)
 
 # Create movie title index
-indices = pd.Series(movies.index, index=movies["title"]).drop_duplicates()
+indices = pd.Series(
+    movies.index,
+    index=movies["title"]
+).drop_duplicates()
 
 # Recommendation function
 def recommend_movies(movie_title):
     idx = indices[movie_title]
-    scores = list(enumerate(cosine_sim[idx]))
-    scores = sorted(scores, key=lambda x: x[1], reverse=True)
-    scores = scores[1:6]
 
-    movie_indices = [i[0] for i in scores]
-    return movies["title"].iloc[movie_indices].tolist()
+    # Calculate similarity only for the selected movie
+    scores = cosine_similarity(
+        tfidf_matrix[idx],
+        tfidf_matrix
+    ).flatten()
+
+    similar_indices = scores.argsort()[::-1]
+    similar_indices = [
+        i for i in similar_indices if i != idx
+    ][:5]
+
+    return movies["title"].iloc[similar_indices].tolist()
 
 # Movie selection dropdown
 movie_title = st.selectbox(
     "Choose a movie:",
-    sorted(movies["title"].dropna().unique())
+    sorted(movies["title"].unique())
 )
 
 # Show recommendations
@@ -47,5 +61,9 @@ if st.button("Recommend Movies"):
     recommendations = recommend_movies(movie_title)
 
     st.subheader("Recommended Movies")
-    for movie in recommendations:
-        st.write("🎥", movie)
+
+    if recommendations:
+        for movie in recommendations:
+            st.write("🎥", movie)
+    else:
+        st.write("No recommendations found.")
