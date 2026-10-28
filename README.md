@@ -1,92 +1,116 @@
-# 🎬 Movie Recommendation System
+# Assignment 39: Deploy Movie Recommendation System
 
-## About the Project
+## Project Overview
 
-The Movie Recommendation System is a content-based recommendation application built using Python, Pandas, Scikit-learn, and Streamlit. It recommends the top 5 similar movies based on the movie selected by the user.
+This project is based on the Movie Recommendation System developed in Assignment 20. The main objective of this assignment is to deploy the project online, test the applications, and compare different deployment platforms.
 
-## Features
+The project demonstrates deployment using Streamlit Community Cloud and Hugging Face Spaces.
 
-- Select a movie from the dropdown menu.
-- Clean and preprocess movie descriptions.
-- Convert movie overviews into numerical features using TF-IDF.
-- Calculate similarity between movies using Cosine Similarity.
-- Display the top 5 similar movie recommendations.
-- Simple and user-friendly web interface.
+## Objectives
+
+- Deploy the Movie Recommendation System using Streamlit Community Cloud.
+- Create and publish a free Static Space on Hugging Face.
+- Test the deployed applications.
+- Compare Streamlit Cloud and Hugging Face Spaces.
+- Understand the advantages and limitations of both platforms.
 
 ## Technologies Used
 
 - Python
-- Pandas
-- Scikit-learn
 - Streamlit
+- HTML
+- CSS
+- JavaScript
+- Git and GitHub
+- Streamlit Community Cloud
+- Hugging Face Spaces
 
-## Dataset
+## Task 1: Streamlit Cloud Deployment
 
-This project uses the TMDB 5000 Movie Dataset available on Kaggle.
+The Movie Recommendation System was deployed using Streamlit Community Cloud.
 
-Dataset Link: https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata
+The GitHub repository contains the project files, including `app.py`, `requirements.txt`, and the movie dataset.
 
-## Project Structure
+**Live Application:**
+[https://movie-recommendation-system-urerxjkzqdnmwkcu5tupwb.streamlit.app/](https://movie-recommendation-system-urerxjkzqdnmwkcu5tupwb.streamlit.app/)
 
-- `app.py` — Streamlit web application and recommendation logic.
-- `task20.py` — Data preprocessing and recommendation implementation.
-- `tmdb_5000_movies.csv` — Movie dataset used by the application.
-- `requirements.txt` — Required Python libraries.
+### Testing
 
-## Installation and Setup
+- The deployed application opens successfully.
+- The movie selection dropdown is visible.
+- Movie recommendations are displayed after selecting a movie and clicking the recommendation button.
 
-### Step 1: Clone the Repository
+**Status: Completed**
 
-```bash
-git clone https://github.com/Neha1016/Movie-Recommendation-System.git
-```
+## Task 2: Hugging Face Spaces Deployment
 
-### Step 2: Open the Project Folder
+A free public Static Space was created on Hugging Face Spaces.
 
-```bash
-cd Movie-Recommendation-System
-```
+Since Static Spaces run HTML, CSS, and JavaScript instead of directly running a Python Streamlit application, a browser-based demo was created.
 
-### Step 3: Install Dependencies
+The demo allows users to select a movie and view sample movie recommendations.
 
-```bash
-pip install -r requirements.txt
-```
+**Hugging Face Space:**
+[https://huggingface.co/spaces/NehaChouhan10/movie-recommendation-system](https://huggingface.co/spaces/NehaChouhan10/movie-recommendation-system)
 
-### Step 4: Run the Application
+### Testing
 
-```bash
-streamlit run app.py
-```
+- The Space was created successfully.
+- The application interface was updated.
+- The movie dropdown and recommendation button were tested.
+- Sample recommendations appeared after selecting a movie.
 
-Make sure `tmdb_5000_movies.csv` is present in the project root folder.
+**Status: Completed**
 
-## How to Use
+## Task 3: Platform Comparison
 
-1. Open the application.
-2. Select a movie from the dropdown menu.
-3. Click the **Recommend Movies** button.
-4. View the similar movie recommendations displayed on the screen.
+| Feature           | Streamlit Community Cloud                 | Hugging Face Spaces                                   |
+| ----------------- | ----------------------------------------- | ----------------------------------------------------- |
+| Main purpose      | Deploy Python data applications           | Host and share AI/ML demos and web applications       |
+| Free hosting      | Available with usage limits               | Free Static Spaces are available                      |
+| Python support    | Direct support for Streamlit applications | Depends on the selected SDK and available hardware    |
+| Main technologies | Python and Streamlit                      | Static Spaces use HTML, CSS, and JavaScript           |
+| Deployment        | Connect a GitHub repository               | Create a Space and upload project files               |
+| Advantages        | Simple deployment for Python applications | Easy way to publish and share web demos               |
+| Limitations       | Resource and usage limitations            | Static Spaces cannot directly run Python applications |
 
-## Deployment
+### Advantages of Streamlit Community Cloud
 
-The application is deployed using Render.
+- Easy to deploy Python applications.
+- Integrates with GitHub repositories.
+- Suitable for data science and machine learning projects.
+- Provides a shareable live application link.
 
-**Live Application:** https://movie-recommendation-system-ximq.onrender.com
+### Advantages of Hugging Face Spaces
 
-## Testing
+- Provides a platform for sharing AI and machine learning projects.
+- Supports different application SDKs.
+- Free Static Spaces can host browser-based applications.
+- Provides a public link to access the demo.
 
-The deployed application was tested successfully.
+### Conclusion of Comparison
 
-- The live website opens.
-- The movie selection dropdown works.
-- The Recommend Movies button works.
-- Similar movie recommendations are displayed for the selected movie.
+Streamlit Community Cloud is suitable for deploying Python-based data science applications such as the original Movie Recommendation System. Hugging Face Spaces is useful for sharing AI/ML applications and browser-based demos. The choice of platform depends on the application's requirements and the available hosting resources.
 
-## GitHub Repository
+## Project Results
 
-https://github.com/Neha1016/Movie-Recommendation-System
+- The original Movie Recommendation System was deployed on Streamlit Community Cloud.
+- A free Static Space was created on Hugging Face Spaces.
+- Both application links were opened and tested.
+- The platform comparison was completed.
+- The benefits and limitations of both deployment platforms were documented.
 
 ## Conclusion
 
-This project demonstrates how TF-IDF and Cosine Similarity can be used to build a content-based movie recommendation system. The Streamlit interface allows users to select a movie and explore similar movies easily.
+This assignment provided practical experience in deploying and testing web applications using two different platforms. Streamlit Community Cloud was used to deploy the original Python Movie Recommendation System, while Hugging Face Spaces was used to publish a static browser-based demo.
+
+The assignment helped develop an understanding of deployment workflows, application testing, public hosting, and platform selection.
+
+## Assignment Status
+
+**All three assignment tasks are completed:**
+
+- [x] Task 1: Streamlit Community Cloud deployment and testing
+- [x] Task 2: Hugging Face Static Space creation, deployment, and testing
+- [x] Task 3: Comparison of Streamlit Community Cloud and Hugging Face Spaces
+- [x] README documentation completed
